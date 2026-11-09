@@ -428,3 +428,4 @@ DO $$ BEGIN ALTER PUBLICATION supabase_realtime ADD TABLE public.positions; EXCE
 DO $$ BEGIN ALTER PUBLICATION supabase_realtime ADD TABLE public.orders; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 DO $$ BEGIN ALTER PUBLICATION supabase_realtime ADD TABLE public.trades; EXCEPTION WHEN OTHERS THEN NULL; END $$;
 DO $$ BEGIN ALTER PUBLICATION supabase_realtime ADD TABLE public.rule_events; EXCEPTION WHEN OTHERS THEN NULL; END $$;
+
