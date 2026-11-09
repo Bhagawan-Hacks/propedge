@@ -159,3 +159,4 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
     </div>
   );
 }
+

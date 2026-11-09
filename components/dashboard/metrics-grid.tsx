@@ -128,3 +128,4 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
     </div>
   );
 }
+

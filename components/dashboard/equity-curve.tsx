@@ -121,3 +121,4 @@ export function EquityCurve({ snapshots, initialBalance }: EquityCurveProps) {
     </Card>
   );
 }
+

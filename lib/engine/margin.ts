@@ -42,3 +42,4 @@ export function hasSufficientMargin(
 ): boolean {
   return freeMargin >= requiredMargin && requiredMargin > 0;
 }
+

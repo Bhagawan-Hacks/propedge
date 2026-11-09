@@ -79,3 +79,4 @@ ON CONFLICT (id) DO UPDATE SET
     min_trading_days = EXCLUDED.min_trading_days,
     max_leverage = EXCLUDED.max_leverage,
     is_active = EXCLUDED.is_active;
+

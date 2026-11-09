@@ -155,3 +155,4 @@ export function RulesProgress({ account }: RulesProgressProps) {
     </Card>
   );
 }
+

@@ -219,3 +219,4 @@ CREATE POLICY "Users can view their own payments"
 CREATE POLICY "Admins can manage all payments"
     ON public.payments FOR ALL
     USING (public.is_admin());
+

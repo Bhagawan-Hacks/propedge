@@ -27,3 +27,4 @@ export function formatPrice(value: number | string | null | undefined, precision
     maximumFractionDigits: precision,
   });
 }
+

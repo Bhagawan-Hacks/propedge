@@ -169,3 +169,4 @@ CREATE INDEX IF NOT EXISTS idx_equity_snapshots_account_time ON public.equity_sn
 CREATE INDEX IF NOT EXISTS idx_rule_events_account_id ON public.rule_events(account_id);
 CREATE INDEX IF NOT EXISTS idx_payouts_account_id ON public.payouts(account_id);
 CREATE INDEX IF NOT EXISTS idx_payments_user_id ON public.payments(user_id);
+

@@ -120,3 +120,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message || 'Checkout failed' }, { status: 500 });
   }
 }
+

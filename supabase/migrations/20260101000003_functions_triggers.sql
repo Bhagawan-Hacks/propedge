@@ -250,3 +250,4 @@ BEGIN
     ALTER PUBLICATION supabase_realtime ADD TABLE public.rule_events;
 EXCEPTION WHEN OTHERS THEN NULL;
 END $$;
+

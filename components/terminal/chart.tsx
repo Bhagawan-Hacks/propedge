@@ -216,3 +216,4 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
     </div>
   );
 }
+

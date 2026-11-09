@@ -381,3 +381,4 @@ export function PositionsTable({ positions, trades, orders, livePrices = {}, onR
     </div>
   );
 }
+

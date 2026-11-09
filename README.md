@@ -261,3 +261,4 @@ PropEdge achieves an authentic proprietary firm simulation through the following
 - **Atomic Concurrency Protection**: High-frequency order submissions and position closures utilize PostgreSQL row-level locks (`SELECT ... FOR UPDATE` via `execute_trade_atomic`) to prevent double-spending of free margin and balance race conditions.
 - **Client-Side High-Frequency Feeds**: Candlestick charts and watchlist quotes stream directly from public Binance WebSockets into the user's browser, eliminating server bandwidth and persistent socket overhead on Vercel while delivering sub-second price updates.
 - **Automated Rule Surveillance**: The risk engine monitors accounts at regular intervals, computing daily loss relative to UTC day-start equity and maximum drawdown relative to starting challenge balance, enforcing strict compliance identical to tier-1 prop firms.
+

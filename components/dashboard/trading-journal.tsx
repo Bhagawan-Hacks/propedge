@@ -153,3 +153,4 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
     </Card>
   );
 }
+

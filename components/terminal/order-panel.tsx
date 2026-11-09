@@ -270,3 +270,4 @@ export function OrderPanel({ symbol, currentPrice, account, onOrderExecuted }: O
     </div>
   );
 }
+

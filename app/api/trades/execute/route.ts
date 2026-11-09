@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
     }
 
     if (!['phase1', 'phase2', 'funded'].includes(acc.status)) {
-      return NextResponse.json({ 
-        error: `Account is not eligible to trade (current status: ${acc.status})` 
+      return NextResponse.json({
+        error: `Account is not eligible to trade (current status: ${acc.status})`
       }, { status: 400 });
     }
 

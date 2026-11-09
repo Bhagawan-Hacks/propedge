@@ -103,3 +103,4 @@ async function dispatchEmail(to: string, subject: string, html: string) {
   console.log(`[SIMULATED EMAIL DISPATCH] To: ${to} | Subject: "${subject}"`);
   return { simulated: true, to, subject };
 }
+
