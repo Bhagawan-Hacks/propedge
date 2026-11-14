@@ -6,6 +6,12 @@ export interface Coupon {
 }
 
 export const VALID_COUPONS: Record<string, Coupon> = {
+  PUJANTHEGOAT: {
+    code: 'PUJANTHEGOAT',
+    discountPct: 100,
+    description: '100% VIP Special Grant',
+    isActive: true,
+  },
   BETA100: {
     code: 'BETA100',
     discountPct: 100,
@@ -59,3 +65,4 @@ export function validateCoupon(code: string): Coupon | null {
   }
   return null;
 }
+
