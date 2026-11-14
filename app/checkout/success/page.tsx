@@ -33,13 +33,13 @@ function CheckoutSuccessContent() {
           {accountNumber && (
             <div className="bg-slate-950/80 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs font-mono">
               <span className="text-slate-400">Account Number:</span>
-              <span className="text-blue-400 font-bold text-sm">{accountNumber}</span>
+              <span className="text-emerald-400 font-bold text-sm">{accountNumber}</span>
             </div>
           )}
 
           <div className="text-left bg-slate-950/50 p-4 rounded-lg border border-slate-800/80 space-y-2 text-xs text-slate-400">
             <div className="flex items-center text-slate-200 font-medium">
-              <ShieldCheck className="h-4 w-4 mr-1.5 text-blue-400" />
+              <ShieldCheck className="h-4 w-4 mr-1.5 text-emerald-400" />
               Evaluation Objectives:
             </div>
             <ul className="list-disc list-inside space-y-1 pl-1">
@@ -54,7 +54,7 @@ function CheckoutSuccessContent() {
 
         <CardFooter className="flex flex-col sm:flex-row gap-3 pt-2">
           <Link href="/terminal" className="w-full">
-            <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white">
+            <Button className="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold">
               <LineChart className="h-4 w-4 mr-2" /> Launch Terminal
             </Button>
           </Link>
