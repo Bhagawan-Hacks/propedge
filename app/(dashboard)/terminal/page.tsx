@@ -42,12 +42,12 @@ export default function TerminalPage() {
   const [selectedAccountId, setSelectedAccountId] = useState<string>(DEMO_ACCOUNT.id);
   const [selectedSymbol, setSelectedSymbol] = useState<string>('BTCUSDT');
   const [livePrices, setLivePrices] = useState<Record<string, number>>({
-    BTCUSDT: 95400.0,
-    ETHUSDT: 3450.0,
-    SOLUSDT: 195.2,
-    BNBUSDT: 642.0,
-    XRPUSDT: 2.45,
-    DOGEUSDT: 0.28,
+    BTCUSDT: 65175.0,
+    ETHUSDT: 1822.4,
+    SOLUSDT: 72.8,
+    BNBUSDT: 589.8,
+    XRPUSDT: 0.9612,
+    DOGEUSDT: 0.0602,
   });
 
   const [positions, setPositions] = useState<Position[]>([]);
@@ -207,7 +207,7 @@ export default function TerminalPage() {
         <div className="lg:col-span-3 xl:col-span-3 flex flex-col">
           <OrderPanel
             symbol={selectedSymbol}
-            currentPrice={livePrices[selectedSymbol] || 95400.0}
+            currentPrice={livePrices[selectedSymbol] || 65175.0}
             account={activeAccount}
             onOrderExecuted={loadAccountData}
           />

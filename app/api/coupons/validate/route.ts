@@ -27,3 +27,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ valid: false, error: 'Failed to validate coupon' }, { status: 500 });
   }
 }
+

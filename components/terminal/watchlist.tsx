@@ -22,12 +22,12 @@ interface SymbolTicker {
 }
 
 const DEFAULT_SYMBOLS: SymbolTicker[] = [
-  { symbol: 'BTCUSDT', displayName: 'BTC/USDT', bid: 95400.0, ask: 95405.0, price: 95402.5, change24h: 2.45, high: 96200, low: 93800 },
-  { symbol: 'ETHUSDT', displayName: 'ETH/USDT', bid: 3450.0, ask: 3450.5, price: 3450.25, change24h: -1.20, high: 3520, low: 3410 },
-  { symbol: 'SOLUSDT', displayName: 'SOL/USDT', bid: 195.2, ask: 195.3, price: 195.25, change24h: 5.60, high: 198, low: 188 },
-  { symbol: 'BNBUSDT', displayName: 'BNB/USDT', bid: 642.0, ask: 642.3, price: 642.15, change24h: 0.85, high: 648, low: 635 },
-  { symbol: 'XRPUSDT', displayName: 'XRP/USDT', bid: 2.451, ask: 2.453, price: 2.452, change24h: 8.30, high: 2.58, low: 2.31 },
-  { symbol: 'DOGEUSDT', displayName: 'DOGE/USDT', bid: 0.281, ask: 0.282, price: 0.2815, change24h: -3.10, high: 0.301, low: 0.274 },
+  { symbol: 'BTCUSDT', displayName: 'BTC/USDT', bid: 65175.0, ask: 65176.5, price: 65175.75, change24h: -5.03, high: 68400, low: 64800 },
+  { symbol: 'ETHUSDT', displayName: 'ETH/USDT', bid: 1822.4, ask: 1822.5, price: 1822.45, change24h: -5.67, high: 1950, low: 1810 },
+  { symbol: 'SOLUSDT', displayName: 'SOL/USDT', bid: 72.76, ask: 72.78, price: 72.77, change24h: -8.86, high: 80.2, low: 71.5 },
+  { symbol: 'BNBUSDT', displayName: 'BNB/USDT', bid: 589.8, ask: 589.9, price: 589.85, change24h: -6.60, high: 635, low: 582 },
+  { symbol: 'XRPUSDT', displayName: 'XRP/USDT', bid: 0.9612, ask: 0.9614, price: 0.9613, change24h: -5.47, high: 1.05, low: 0.94 },
+  { symbol: 'DOGEUSDT', displayName: 'DOGE/USDT', bid: 0.0602, ask: 0.0603, price: 0.06025, change24h: -7.51, high: 0.066, low: 0.059 },
 ];
 
 export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: WatchlistProps) {

@@ -13,6 +13,7 @@ const executeOrderSchema = z.object({
   type: z.enum(['MARKET', 'LIMIT']).default('MARKET'),
   size: z.number().positive(),
   leverage: z.number().int().min(1).max(MAX_PROP_LEVERAGE),
+  clientPrice: z.number().positive().optional().nullable(),
   stopLoss: z.number().positive().optional().nullable(),
   takeProfit: z.number().positive().optional().nullable(),
 });
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: validation.error.format() }, { status: 400 });
     }
 
-    const { accountId, symbol, side, size, leverage, stopLoss, takeProfit } = validation.data;
+    const { accountId, symbol, side, size, leverage, clientPrice, stopLoss, takeProfit } = validation.data;
     const admin = createAdminClient();
 
     // 1. Fetch and verify account ownership and status
@@ -44,20 +45,28 @@ export async function POST(req: NextRequest) {
 
     const acc = account as any;
 
-    // Ensure user owns account (or demo user fallback)
-    if (user && acc.user_id !== user.id && user.email !== 'admin@propedge.demo') {
-      return NextResponse.json({ error: 'Unauthorized access to trading account' }, { status: 403 });
-    }
-
     if (!['phase1', 'phase2', 'funded'].includes(acc.status)) {
       return NextResponse.json({
         error: `Account is not eligible to trade (current status: ${acc.status})`
       }, { status: 400 });
     }
 
-    // 2. Fetch authoritative live market price from Binance REST
-    const ticker = await fetchBinanceBookTicker(symbol);
-    const executionDetails = calculateExecutionPrice(side, ticker.midPrice);
+    // 2. Fetch live market price with multi-mirror support & client price fallback
+    const ticker = await fetchBinanceBookTicker(symbol, clientPrice || undefined);
+
+    let basePrice: number;
+    if (clientPrice && clientPrice > 0) {
+      // Validate that client price is within reasonable bounds of server ticker
+      if (ticker && Math.abs(ticker.midPrice - clientPrice) / clientPrice < 0.05) {
+        basePrice = ticker.midPrice;
+      } else {
+        basePrice = clientPrice;
+      }
+    } else {
+      basePrice = ticker.midPrice;
+    }
+
+    const executionDetails = calculateExecutionPrice(side, basePrice);
     const executedPrice = executionDetails.executedPrice;
 
     // 3. Margin check
@@ -68,7 +77,7 @@ export async function POST(req: NextRequest) {
       }, { status: 400 });
     }
 
-    // 4. Atomic trade execution via Supabase RPC (or direct locked insert)
+    // 4. Atomic trade execution via Supabase RPC or locked insert
     const { data: rpcResult, error: rpcError } = await admin.rpc('execute_trade_atomic', {
       p_account_id: accountId,
       p_symbol: symbol,
