@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 222 47% 7%;
+    --background: 222 47% 6%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 9%;
+    --card: 222 47% 8%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 9%;
+    --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
+    --primary: 158 64% 45%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217.2 32.6% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 217.2 32.6% 14%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217.2 32.6% 14%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -30,26 +30,26 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --ring: 158 64% 45%;
 
     --radius: 0.5rem;
   }
 }
 
 body {
-  background-color: #080c14;
+  background-color: #0b0f17;
   color: #f1f5f9;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Custom MT5-style scrollbars */
+/* Custom terminal & institutional-style scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0b0f17;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -60,4 +60,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
-

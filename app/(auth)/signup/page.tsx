@@ -87,12 +87,12 @@ export default function SignupPage() {
     <div className="flex-1 flex items-center justify-center p-4 py-12">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
-          <div className="inline-flex h-12 w-12 rounded-xl bg-blue-600/20 border border-blue-500/30 items-center justify-center text-blue-400 mb-2">
+          <div className="inline-flex h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 items-center justify-center text-emerald-400 mb-2">
             <TrendingUp className="h-6 w-6" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white">Create Your PropEdge Account</h1>
           <p className="text-sm text-slate-400">
-            Start your proprietary evaluation journey with paper trading.
+            Start your proprietary evaluation journey with real-time liquidity feeds.
           </p>
         </div>
 
@@ -162,36 +162,7 @@ export default function SignupPage() {
                 </div>
               </div>
 
-              {/* Account role toggle for college / portfolio evaluation convenience */}
-              <div className="space-y-1.5 pt-1">
-                <label className="text-xs font-medium text-slate-300">Demonstration Role</label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setRole('user')}
-                    className={`py-1.5 px-3 rounded-lg text-xs font-medium border text-center transition-all ${
-                      role === 'user'
-                        ? 'border-blue-500 bg-blue-500/20 text-blue-300'
-                        : 'border-slate-800 bg-slate-950 text-slate-400 hover:bg-slate-900'
-                    }`}
-                  >
-                    Standard Trader
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setRole('admin')}
-                    className={`py-1.5 px-3 rounded-lg text-xs font-medium border text-center transition-all ${
-                      role === 'admin'
-                        ? 'border-amber-500 bg-amber-500/20 text-amber-300'
-                        : 'border-slate-800 bg-slate-950 text-slate-400 hover:bg-slate-900'
-                    }`}
-                  >
-                    Firm Admin
-                  </button>
-                </div>
-              </div>
-
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-500" disabled={loading}>
+              <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold" disabled={loading}>
                 {loading ? 'Creating Account...' : 'Create Account'}
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>

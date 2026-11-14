@@ -101,14 +101,14 @@ export default function PricingPage() {
     <div className="flex-1 py-12 px-4 container mx-auto max-w-6xl space-y-12">
       {/* Header */}
       <div className="text-center space-y-3 max-w-3xl mx-auto">
-        <Badge variant="outline" className="border-blue-500/40 text-blue-400 bg-blue-950/30 px-3 py-1">
-          Simulated Prop Challenges
+        <Badge variant="outline" className="border-emerald-500/40 text-emerald-400 bg-emerald-950/20 px-3 py-1">
+          Evaluation Challenge Tiers
         </Badge>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           Choose Your Evaluation Capital
         </h1>
         <p className="text-sm sm:text-base text-slate-400">
-          All challenges are paper trading accounts simulating institutional proprietary firm conditions. Pass Phase 1 (8%) and Phase 2 (5%) to qualify for simulated funded payouts (80% virtual profit split).
+          All challenges are paper trading accounts simulating institutional proprietary firm conditions. Pass Phase 1 (8%) and Phase 2 (5%) to qualify for funded payouts (80% performance profit split).
         </p>
       </div>
 
@@ -128,13 +128,13 @@ export default function PricingPage() {
               key={plan.id}
               className={`relative flex flex-col justify-between transition-all duration-200 ${
                 plan.popular
-                  ? 'border-blue-500 bg-slate-900 shadow-xl shadow-blue-500/15 scale-[1.02]'
+                  ? 'border-emerald-500/80 bg-slate-900 shadow-xl shadow-emerald-500/10 scale-[1.02]'
                   : 'border-slate-800 bg-slate-950/80 hover:border-slate-700'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-blue-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+                  <span className="bg-emerald-600 text-slate-950 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
                     Most Popular
                   </span>
                 </div>
@@ -190,7 +190,7 @@ export default function PricingPage() {
                   disabled={isLoading}
                   className={`w-full ${
                     plan.popular
-                      ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                      ? 'bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold'
                       : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
                   }`}
                 >

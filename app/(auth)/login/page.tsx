@@ -86,12 +86,12 @@ function LoginForm() {
     <div className="flex-1 flex items-center justify-center p-4 py-12">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
-          <div className="inline-flex h-12 w-12 rounded-xl bg-blue-600/20 border border-blue-500/30 items-center justify-center text-blue-400 mb-2">
+          <div className="inline-flex h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 items-center justify-center text-emerald-400 mb-2">
             <TrendingUp className="h-6 w-6" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white">Welcome Back to PropEdge</h1>
           <p className="text-sm text-slate-400">
-            Sign in to access your simulated challenge accounts and trading terminal.
+            Sign in to access your challenge accounts and trading terminal.
           </p>
         </div>
 
@@ -173,7 +173,7 @@ function LoginForm() {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-500" disabled={loading}>
+              <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold" disabled={loading}>
                 {loading ? 'Authenticating...' : 'Sign In with Email'}
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
@@ -218,7 +218,7 @@ function LoginForm() {
           </CardContent>
           <CardFooter className="flex justify-center border-t border-slate-800/80 pt-4 text-xs text-slate-400">
             Don&apos;t have an account?{' '}
-            <Link href="/signup" className="text-blue-400 hover:underline ml-1 font-medium">
+            <Link href="/signup" className="text-emerald-400 hover:underline ml-1 font-medium">
               Create an account
             </Link>
           </CardFooter>

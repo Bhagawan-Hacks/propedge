@@ -335,8 +335,8 @@ export default function PayoutsPage() {
                 />
               </div>
 
-              <div className="bg-amber-950/30 border border-amber-500/20 p-2.5 rounded text-[11px] text-amber-300 space-y-1">
-                <strong>Simulation Notice:</strong> No real fiat or cryptocurrency transfers will take place. This is an educational demonstration flow.
+              <div className="bg-slate-950 border border-slate-800 p-2.5 rounded text-[11px] text-slate-400 space-y-1">
+                <strong className="text-slate-200">Payout Processing:</strong> Withdrawal requests undergo risk compliance review prior to settlement. Ensure destination details are accurate.
               </div>
 
               <DialogFooter className="pt-2">

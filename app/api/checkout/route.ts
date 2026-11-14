@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
     const isMockStripe = !process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes('mock');
 
-    // If direct demo purchase or Stripe key is mock, provision account immediately for seamless college/testing demo
+    // If direct demo purchase or Stripe key is mock, provision account immediately for seamless beta testing access
     if (directDemoPurchase || isMockStripe) {
       const randomAccNum = `PE-${Math.floor(100000 + Math.random() * 900000)}`;
 

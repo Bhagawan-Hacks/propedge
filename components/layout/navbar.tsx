@@ -85,19 +85,17 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Brand */}
         <Link href="/" className="flex items-center space-x-2.5 group">
-          <div className="h-9 w-9 rounded-lg bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-[1px] shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            <div className="h-full w-full bg-slate-950 rounded-lg flex items-center justify-center">
-              <TrendingUp className="h-5 w-5 text-blue-400" />
-            </div>
+          <div className="h-9 w-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-all shadow-sm">
+            <TrendingUp className="h-5 w-5 text-emerald-400" />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
               PropEdge
-              <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-blue-500/40 text-blue-400 bg-blue-950/30">
-                SIM
+              <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-emerald-500/30 text-emerald-400 bg-emerald-950/20 font-semibold tracking-wider">
+                BETA
               </Badge>
             </span>
-            <span className="text-[10px] text-slate-400 font-mono tracking-wider">PAPER PROP FIRM</span>
+            <span className="text-[10px] text-slate-400 font-mono tracking-wider">EVALUATION & FUNDED</span>
           </div>
         </Link>
 
@@ -112,8 +110,8 @@ export function Navbar() {
                 href={link.href}
                 className={`flex items-center space-x-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                   isActive
-                    ? 'bg-slate-800/80 text-blue-400 shadow-inner'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-900'
+                    ? 'bg-slate-800/80 text-white font-medium border border-slate-700/60 shadow-sm'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-900/70'
                 }`}
               >
                 <Icon className="h-4 w-4" />

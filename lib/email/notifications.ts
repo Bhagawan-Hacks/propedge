@@ -36,7 +36,7 @@ export async function sendBreachNotification({ toEmail, accountNumber, ruleName,
         <p style="margin: 4px 0 0 0; color: #fca5a5;"><strong>Recorded Value:</strong> $${breachValue.toFixed(2)}</p>
       </div>
       <p>In accordance with firm rules, all active positions have been closed and the account is now locked. You may review your full trading journal and analytics in your dashboard.</p>
-      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Simulation Platform — Educational Demonstration Only</p>
+      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Technologies — Proprietary Trading Evaluation Platform</p>
     </div>
   `;
 
@@ -54,7 +54,7 @@ export async function sendPhasePassNotification({ toEmail, accountNumber, newPha
         <p style="margin: 0; color: #a7f3d0;"><strong>Advanced To:</strong> ${newPhase.toUpperCase()}</p>
       </div>
       <p>Your new allocation is now ready in your trading terminal.</p>
-      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Simulation Platform — Educational Demonstration Only</p>
+      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Technologies — Proprietary Trading Evaluation Platform</p>
     </div>
   `;
 
@@ -68,7 +68,7 @@ export async function sendPayoutNotification({ toEmail, accountNumber, amount, s
       <h2 style="color: #3b82f6;">Payout Request ${status}</h2>
       <p>Dear Trader,</p>
       <p>Your simulated 80% profit split withdrawal request for <strong>$${amount.toFixed(2)}</strong> from account <strong>${accountNumber}</strong> has been marked as <strong>${status}</strong> by firm administration.</p>
-      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Simulation Platform — Educational Demonstration Only</p>
+      <p style="color: #64748b; font-size: 12px; margin-top: 24px;">PropEdge Technologies — Proprietary Trading Evaluation Platform</p>
     </div>
   `;
 
