@@ -98,37 +98,37 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
       width: chartContainerRef.current.clientWidth,
       height: chartContainerRef.current.clientHeight || 450,
       layout: {
-        background: { type: ColorType.Solid, color: '#090d16' },
+        background: { type: ColorType.Solid, color: '#080c18' },
         textColor: '#94a3b8',
         fontSize: 11,
         fontFamily: 'Inter, system-ui, sans-serif',
       },
       grid: {
-        vertLines: { color: '#131b2c', style: 1 },
-        horzLines: { color: '#131b2c', style: 1 },
+        vertLines: { color: '#131c2e', style: 1 },
+        horzLines: { color: '#131c2e', style: 1 },
       },
       crosshair: {
         mode: 1,
         vertLine: {
-          color: '#38bdf8',
+          color: '#8b5cf6',
           width: 1,
           style: 3,
-          labelBackgroundColor: '#0f172a',
+          labelBackgroundColor: '#121829',
         },
         horzLine: {
-          color: '#38bdf8',
+          color: '#8b5cf6',
           width: 1,
           style: 3,
-          labelBackgroundColor: '#0f172a',
+          labelBackgroundColor: '#121829',
         },
       },
       timeScale: {
-        borderColor: '#1e293b',
+        borderColor: '#1b2234',
         timeVisible: true,
         secondsVisible: false,
       },
       rightPriceScale: {
-        borderColor: '#1e293b',
+        borderColor: '#1b2234',
         autoScale: true,
         scaleMargins: {
           top: 0.1,
@@ -149,9 +149,9 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
 
     // Area / Line Series (for Line mode)
     const lineSeries = chart.addAreaSeries({
-      topColor: 'rgba(16, 185, 129, 0.28)',
-      bottomColor: 'rgba(16, 185, 129, 0.02)',
-      lineColor: '#10b981',
+      topColor: 'rgba(139, 92, 246, 0.35)',
+      bottomColor: 'rgba(139, 92, 246, 0.02)',
+      lineColor: '#8b5cf6',
       lineWidth: 2,
       visible: false,
     });
@@ -403,18 +403,18 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
   return (
     <div 
       ref={chartWrapperRef}
-      className={`flex flex-col bg-[#090d16] border border-slate-800 rounded-lg overflow-hidden transition-all duration-200 ${
+      className={`flex flex-col bg-[#080c18] border border-[#1b2234] rounded-2xl overflow-hidden transition-all duration-200 shadow-xl ${
         isFullscreen ? 'fixed inset-0 z-50 rounded-none' : 'h-full'
       }`}
     >
       {/* Top TradingView Toolbar */}
-      <div className="flex flex-wrap items-center justify-between px-3 py-2 bg-slate-950/90 border-b border-slate-800 text-xs gap-2 select-none">
+      <div className="flex flex-wrap items-center justify-between px-3.5 py-2.5 bg-[#0a0f1c] border-b border-[#1b2234] text-xs gap-2 select-none">
         {/* Left: Symbol & Stats */}
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
             <span className="font-extrabold text-white text-sm font-mono tracking-wider">{symbol}</span>
-            <span className="px-1.5 py-0.5 rounded text-[10px] bg-slate-800/80 text-slate-300 font-mono">
-              BINANCE
+            <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#141d30] border border-[#1f2d48] text-violet-300 font-mono font-semibold">
+              LIVE FEED
             </span>
           </div>
 
@@ -431,7 +431,7 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
 
           {/* 24h High/Low Stats */}
           {high24h && low24h && (
-            <div className="hidden xl:flex items-center space-x-3 text-[10px] text-slate-400 font-mono pl-2 border-l border-slate-800">
+            <div className="hidden xl:flex items-center space-x-3 text-[10px] text-slate-400 font-mono pl-2 border-l border-[#1b2234]">
               <div>24h High: <strong className="text-slate-200">${high24h.toFixed(2)}</strong></div>
               <div>24h Low: <strong className="text-slate-200">${low24h.toFixed(2)}</strong></div>
             </div>
@@ -441,33 +441,33 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
         {/* Right: TradingView Tools & Indicators */}
         <div className="flex items-center space-x-1.5">
           {/* Chart Style Toggle (Candles vs Line) */}
-          <div className="flex items-center bg-slate-900 border border-slate-800 rounded p-0.5">
+          <div className="flex items-center bg-[#06080f] border border-[#1b2234] rounded-xl p-0.5">
             <button
               onClick={() => toggleChartType('candles')}
               title="Candlestick Chart"
-              className={`p-1 rounded transition ${chartType === 'candles' ? 'bg-slate-800 text-emerald-400' : 'text-slate-400 hover:text-white'}`}
+              className={`p-1.5 rounded-lg transition ${chartType === 'candles' ? 'bg-[#151c2e] text-violet-400 shadow-sm' : 'text-slate-400 hover:text-white'}`}
             >
               <CandlestickChart className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => toggleChartType('line')}
               title="Line / Area Chart"
-              className={`p-1 rounded transition ${chartType === 'line' ? 'bg-slate-800 text-emerald-400' : 'text-slate-400 hover:text-white'}`}
+              className={`p-1.5 rounded-lg transition ${chartType === 'line' ? 'bg-[#151c2e] text-violet-400 shadow-sm' : 'text-slate-400 hover:text-white'}`}
             >
               <LineChartIcon className="h-3.5 w-3.5" />
             </button>
           </div>
 
           {/* Timeframe Selector */}
-          <div className="flex items-center space-x-0.5 bg-slate-900 border border-slate-800 rounded p-0.5">
+          <div className="flex items-center space-x-0.5 bg-[#06080f] border border-[#1b2234] rounded-xl p-0.5">
             {TIMEFRAMES.map((tf) => (
               <button
                 key={tf.value}
                 onClick={() => setInterval(tf.value)}
-                className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                className={`px-2 py-0.5 rounded-lg text-[10px] font-mono transition-colors ${
                   interval === tf.value
-                    ? 'bg-emerald-600 text-slate-950 font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-sm shadow-violet-500/30'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
                 {tf.label}
@@ -555,9 +555,9 @@ export function TradingChart({ symbol, onPriceUpdate }: ChartProps) {
       {/* Chart Canvas Area */}
       <div className="relative flex-1 min-h-[360px] w-full">
         {loading && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#090d16]/80 backdrop-blur-xs">
-            <Loader2 className="h-6 w-6 animate-spin text-emerald-500 mr-2" />
-            <span className="text-xs text-slate-300">Connecting TradingView WebSocket Stream...</span>
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#080c18]/85 backdrop-blur-xs">
+            <Loader2 className="h-6 w-6 animate-spin text-violet-500 mr-2.5" />
+            <span className="text-xs text-slate-300 font-medium">Connecting Real-Time Market Feed...</span>
           </div>
         )}
         <div ref={chartContainerRef} className="absolute inset-0 w-full h-full" />

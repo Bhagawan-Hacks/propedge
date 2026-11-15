@@ -4,59 +4,83 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
+    --background: 228 43% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 8%;
+    --card: 228 40% 7%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 8%;
+    --popover: 228 40% 7%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 158 64% 45%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* FundingPips Signature Violet Primary */
+    --primary: 263 90% 66%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 15%;
+    --secondary: 228 28% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 14%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 228 25% 12%;
+    --muted-foreground: 215 18% 62%;
 
-    --accent: 217.2 32.6% 14%;
+    --accent: 263 70% 50%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 158 64% 45%;
+    --border: 228 26% 16%;
+    --input: 228 26% 16%;
+    --ring: 263 90% 66%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 }
 
 body {
-  background-color: #0b0f17;
-  color: #f1f5f9;
+  background-color: #06080f;
+  color: #f8fafc;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Custom terminal & institutional-style scrollbars */
+/* Custom FundingPips-style scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f17;
+  background: #06080f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1c2438;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #2e3a59;
+}
+
+/* FundingPips Radial Glows & Background Effects */
+.fp-hero-radial {
+  background: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.22) 0%, rgba(109, 40, 217, 0.08) 35%, rgba(6, 8, 15, 0) 70%);
+}
+
+.fp-card-gradient {
+  background: linear-gradient(180deg, rgba(16, 22, 38, 0.85) 0%, rgba(10, 14, 25, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.fp-card-glow {
+  box-shadow: 0 0 35px -8px rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.45);
+}
+
+.fp-btn-glow {
+  box-shadow: 0 0 25px -4px rgba(139, 92, 246, 0.45);
+}
+
+.fp-btn-glow:hover {
+  box-shadow: 0 0 35px -2px rgba(139, 92, 246, 0.65);
 }

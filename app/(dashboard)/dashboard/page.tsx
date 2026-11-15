@@ -28,7 +28,7 @@ const MOCK_ACCOUNT: TradingAccount = {
   id: '00000000-0000-0000-0000-000000000001',
   user_id: '00000000-0000-0000-0000-000000000001',
   plan_id: '11111111-1111-1111-1111-111111111111',
-  account_number: 'PE-DEMO-1001',
+  account_number: 'FP-DEMO-1001',
   status: 'phase1',
   initial_balance: 10000,
   current_balance: 10450,
@@ -113,12 +113,12 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex-1 py-8 px-4 container mx-auto max-w-7xl space-y-6">
+    <div className="flex-1 py-8 px-4 container mx-auto max-w-7xl space-y-6 bg-[#06080f]">
       {/* Top Banner & Account Switcher */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-b from-[#0e1424] to-[#090d18] p-5 rounded-2xl border border-[#1b2234] shadow-xl">
         <div className="space-y-1">
-          <div className="flex items-center space-x-2">
-            <h1 className="text-xl font-bold text-white tracking-tight">Trader Dashboard</h1>
+          <div className="flex items-center space-x-2.5">
+            <h1 className="text-xl font-extrabold text-white tracking-tight">Trader Dashboard</h1>
             <Badge
               variant={
                 selectedAccount.status === 'funded'
@@ -135,17 +135,17 @@ export default function DashboardPage() {
             </Badge>
           </div>
           <p className="text-xs text-slate-400">
-            Account: <strong className="text-white font-mono">{selectedAccount.account_number}</strong> | Initial Allocation: <strong className="text-white font-mono">${Number(selectedAccount.initial_balance).toLocaleString()}</strong>
+            Account: <strong className="text-white font-mono">{selectedAccount.account_number}</strong> | Initial Allocation: <strong className="text-violet-300 font-mono">${Number(selectedAccount.initial_balance).toLocaleString()}</strong>
           </p>
         </div>
 
         {/* Account controls */}
-        <div className="flex items-center flex-wrap gap-2">
+        <div className="flex items-center flex-wrap gap-2.5">
           {/* Account switcher */}
           <select
             value={selectedAccount.id}
             onChange={(e) => setSelectedAccountId(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-white rounded-md px-3 py-1.5 text-xs font-mono font-bold focus:outline-none"
+            className="bg-[#060910] border border-[#1d2a40] text-white rounded-xl px-3 py-2 text-xs font-mono font-bold focus:outline-none focus:ring-2 focus:ring-violet-500"
           >
             {accounts.map((acc) => (
               <option key={acc.id} value={acc.id}>
@@ -159,7 +159,7 @@ export default function DashboardPage() {
             variant="outline"
             onClick={triggerRiskEvaluation}
             disabled={evaluating}
-            className="border-slate-700 text-xs text-slate-300 hover:text-white"
+            className="rounded-xl border-[#1d2a40] text-xs text-slate-300 hover:text-white hover:border-violet-500/40"
             title="Run Risk Engine check on demand"
           >
             <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${evaluating ? 'animate-spin' : ''}`} />
@@ -167,15 +167,15 @@ export default function DashboardPage() {
           </Button>
 
           <Link href={`/terminal`}>
-            <Button size="sm" className="bg-blue-600 hover:bg-blue-500 text-xs">
-              <LineChart className="h-3.5 w-3.5 mr-1.5" />
+            <Button size="sm" className="rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold text-xs shadow-[0_0_15px_rgba(139,92,246,0.35)] border border-violet-400/30">
+              <LineChart className="h-3.5 w-3.5 mr-1.5 text-violet-200" />
               Open Terminal
             </Button>
           </Link>
 
           {selectedAccount.status === 'funded' && (
             <Link href="/payouts">
-              <Button size="sm" className="bg-emerald-600 hover:bg-emerald-500 text-xs">
+              <Button size="sm" className="rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-600/20">
                 <DollarSign className="h-3.5 w-3.5 mr-1" />
                 Request Payout
               </Button>
@@ -183,7 +183,7 @@ export default function DashboardPage() {
           )}
 
           <Link href="/pricing">
-            <Button size="sm" variant="outline" className="border-slate-700 text-xs text-slate-300">
+            <Button size="sm" variant="outline" className="rounded-xl border-[#1d2a40] text-xs text-slate-300 hover:border-violet-500/40">
               <PlusCircle className="h-3.5 w-3.5 mr-1" />
               New Challenge
             </Button>
@@ -192,7 +192,7 @@ export default function DashboardPage() {
       </div>
 
       {evalMessage && (
-        <div className="p-3 rounded-lg bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs flex items-center justify-between">
           <span>{evalMessage}</span>
           <button onClick={() => setEvalMessage(null)} className="text-slate-400 hover:text-white">✕</button>
         </div>

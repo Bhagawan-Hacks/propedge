@@ -207,93 +207,92 @@ export default function PricingPage() {
   const finalPrice = Math.max(0, originalPrice - discountAmount);
 
   return (
-    <div className="flex-1 py-12 px-4 container mx-auto max-w-6xl space-y-12 bg-[#0b0f17]">
+    <div className="flex-1 py-16 px-4 container mx-auto max-w-6xl space-y-14 bg-[#06080f]">
       {/* Header */}
-      <div className="text-center space-y-3 max-w-3xl mx-auto">
-        <Badge variant="outline" className="border-emerald-500/40 text-emerald-400 bg-emerald-950/20 px-3 py-1 font-semibold tracking-wider">
+      <div className="text-center space-y-4 max-w-3xl mx-auto">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-xs font-semibold text-violet-400 uppercase tracking-wider">
           Evaluation Challenge Tiers
-        </Badge>
+        </div>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Choose Your Evaluation Capital
+          Choose Your <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Evaluation Capital</span>
         </h1>
         <p className="text-sm sm:text-base text-slate-400">
-          All challenges are paper trading accounts simulating institutional proprietary firm conditions. Pass Phase 1 (8%) and Phase 2 (5%) to qualify for funded payouts with an <strong>80% performance profit split</strong>.
+          All challenges simulate institutional proprietary firm conditions. Pass Phase 1 (8%) and Phase 2 (5%) to qualify for funded payouts with an <strong className="text-white">80–100% profit split</strong>. <strong className="text-violet-400">Fee is 100% refundable</strong> with your first payout.
         </p>
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         {PLANS.map((plan) => (
           <Card
             key={plan.id}
-            className={`relative flex flex-col justify-between transition-all duration-200 ${
+            className={`relative flex flex-col justify-between transition-all duration-200 hover:scale-[1.01] ${
               plan.popular
-                ? 'border-emerald-500/80 bg-slate-900 shadow-xl shadow-emerald-500/10 scale-[1.02]'
-                : 'border-slate-800 bg-slate-900/40 hover:border-slate-700'
+                ? 'border-violet-500/80 bg-gradient-to-b from-[#131a2f] to-[#0d1220] shadow-[0_0_30px_rgba(139,92,246,0.2)] scale-[1.02]'
+                : 'border-[#1b2234] hover:border-violet-500/40'
             }`}
           >
             {plan.popular && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-emerald-600 text-slate-950 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-violet-500/30">
                   Most Popular
                 </span>
               </div>
             )}
 
-            <CardHeader className="text-center pb-2 pt-6">
-              <CardTitle className="text-lg font-bold text-white">{plan.name}</CardTitle>
+            <CardHeader className="text-center pb-2 pt-7">
+              <CardTitle className="text-base font-extrabold text-white">{plan.name}</CardTitle>
               <CardDescription className="text-xs min-h-[32px] pt-1 text-slate-400">{plan.description}</CardDescription>
-              <div className="mt-4 flex items-baseline justify-center">
-                <span className="text-3xl font-extrabold text-white font-mono">${plan.price}</span>
-                <span className="text-xs text-slate-400 ml-1">one-time fee</span>
+              <div className="mt-5 flex items-baseline justify-center gap-1">
+                <span className="text-4xl font-extrabold text-white font-mono">${plan.price}</span>
+                <span className="text-xs text-slate-400">/ one-time</span>
+              </div>
+              <div className="mt-1.5 text-[10px] font-semibold text-emerald-400 uppercase tracking-wide">
+                100% Refundable
               </div>
             </CardHeader>
 
-            <CardContent className="space-y-2.5 pt-4 text-xs">
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+            <CardContent className="space-y-0 pt-3 text-xs divide-y divide-[#1b2234]">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Simulated Capital</span>
                 <span className="font-bold text-white font-mono">${plan.balance.toLocaleString()}</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Phase 1 Target (8%)</span>
                 <span className="font-semibold text-emerald-400 font-mono">+${plan.phase1Target.toLocaleString()}</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Phase 2 Target (5%)</span>
                 <span className="font-semibold text-emerald-400 font-mono">+${plan.phase2Target.toLocaleString()}</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Max Daily Loss (5%)</span>
                 <span className="font-semibold text-rose-400 font-mono">-${plan.dailyLoss.toLocaleString()}</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Max Drawdown (10%)</span>
                 <span className="font-semibold text-rose-400 font-mono">-${plan.maxDrawdown.toLocaleString()}</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Min Trading Days</span>
-                <span className="font-semibold text-slate-200">5 Days</span>
+                <span className="font-semibold text-slate-200">0 Days</span>
               </div>
-              <div className="flex items-center justify-between py-1.5 border-b border-slate-800/80">
-                <span className="text-slate-400">Max Leverage</span>
-                <span className="font-semibold text-slate-200">1:20 Notional</span>
-              </div>
-              <div className="flex items-center justify-between py-1.5">
+              <div className="flex items-center justify-between py-2.5">
                 <span className="text-slate-400">Profit Split</span>
-                <span className="font-bold text-emerald-400 font-mono">80% Performance</span>
+                <span className="font-bold text-emerald-400 font-mono">Up to 100%</span>
               </div>
             </CardContent>
 
             <CardFooter className="pt-2 pb-6 flex flex-col gap-2">
               <Button
                 onClick={() => openCheckout(plan)}
-                className={`w-full font-semibold ${
+                className={`w-full font-bold rounded-xl ${
                   plan.popular
-                    ? 'bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold'
-                    : 'bg-slate-800 hover:bg-slate-700 text-slate-200'
+                    ? 'bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] border border-violet-400/30'
+                    : 'bg-[#131a2c] hover:bg-[#1a2338] text-slate-200 border border-[#1e2a40] hover:border-violet-500/40'
                 }`}
               >
-                Select Challenge <ArrowRight className="h-4 w-4 ml-1.5" />
+                Get Started <ArrowRight className="h-4 w-4 ml-1.5" />
               </Button>
             </CardFooter>
           </Card>
@@ -301,19 +300,19 @@ export default function PricingPage() {
       </div>
 
       {/* Rules Overview */}
-      <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6 space-y-4">
+      <div className="bg-[#0b1020] border border-[#1b2234] rounded-2xl p-6 space-y-4">
         <h3 className="text-lg font-bold text-white flex items-center gap-2">
-          <ShieldCheck className="h-5 w-5 text-emerald-400" />
+          <ShieldCheck className="h-5 w-5 text-violet-400" />
           Evaluation Rules & Execution Parameters
         </h3>
         <div className="grid md:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed">
-          <div className="space-y-2 bg-slate-950/50 p-4 rounded-lg border border-slate-800/80">
+          <div className="space-y-2 bg-[#080d18] p-4 rounded-xl border border-[#1b2234]">
             <h4 className="font-semibold text-white">Daily Loss Limit Calculation (5%)</h4>
             <p>
               Calculated dynamically from the account equity at 00:00:00 UTC of each trading day. If equity falls below 95% of the day-start equity at any moment during the day (including unrealized floating loss), the account is automatically locked and flagged as breached.
             </p>
           </div>
-          <div className="space-y-2 bg-slate-950/50 p-4 rounded-lg border border-slate-800/80">
+          <div className="space-y-2 bg-[#080d18] p-4 rounded-xl border border-[#1b2234]">
             <h4 className="font-semibold text-white">Max Overall Drawdown (10%)</h4>
             <p>
               Account equity must never breach 10% below the initial challenge balance (e.g. $9,000 for a $10,000 account). Unlike high-water mark trailing models, this static drawdown rule provides greater resilience and flexibility.
@@ -322,12 +321,11 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* Checkout & Coupon Redemption Dialog */}
       <Dialog open={checkoutModalOpen} onOpenChange={setCheckoutModalOpen}>
-        <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-800 text-slate-100">
+        <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto bg-[#0a0f1c] border border-[#1b2234] text-slate-100 rounded-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold text-white flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-emerald-400" />
+              <ShieldCheck className="h-5 w-5 text-violet-400" />
               Challenge Enrollment: {selectedPlan?.name}
             </DialogTitle>
             <DialogDescription className="text-xs text-slate-400">
@@ -470,7 +468,7 @@ export default function PricingPage() {
                 <div className="flex gap-2">
                   <Input
                     type="text"
-                    placeholder="Enter coupon (e.g. BETA100, PROP50)"
+                    placeholder="Enter coupon code (e.g. WELCOME10)"
                     value={couponCodeInput}
                     onChange={(e) => setCouponCodeInput(e.target.value)}
                     className="bg-slate-950 border-slate-800 text-xs uppercase font-mono"
@@ -491,7 +489,7 @@ export default function PricingPage() {
               )}
 
               <p className="text-[11px] text-slate-500">
-                Tip: Worldwide beta testers can redeem <strong className="text-emerald-400 font-mono">BETA100</strong> or <strong className="text-emerald-400 font-mono">LAUNCH100</strong> for a 100% discount.
+                Use code <strong className="text-emerald-400 font-mono">WELCOME10</strong> for 10% off your challenge.
               </p>
             </div>
 
@@ -518,14 +516,14 @@ export default function PricingPage() {
                 type="button"
                 variant="outline"
                 onClick={() => setCheckoutModalOpen(false)}
-                className="border-slate-800 text-slate-400 hover:bg-slate-800"
+                className="rounded-xl"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 disabled={submitting}
-                className="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6"
+                className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold px-6 shadow-[0_0_20px_rgba(139,92,246,0.4)] border border-violet-400/30"
               >
                 {submitting ? 'Activating Account...' : 'Confirm & Launch Challenge'}
                 <ArrowRight className="h-4 w-4 ml-1.5" />

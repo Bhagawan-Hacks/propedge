@@ -12,7 +12,8 @@ import {
   ArrowRight,
   AlertCircle,
   HelpCircle,
-  Loader2
+  Loader2,
+  Wallet
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -107,23 +108,23 @@ export default function PayoutsPage() {
     } catch (err: any) {
       setFeedback(err.message || 'Error submitting payout.');
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
   }
 
   return (
-    <div className="flex-1 py-8 px-4 container mx-auto max-w-5xl space-y-8">
+    <div className="flex-1 py-10 px-4 container mx-auto max-w-5xl space-y-8 bg-[#06080f]">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <Badge variant="outline" className="text-emerald-400 border-emerald-500/40 bg-emerald-950/30 px-3 py-1 mb-2">
-            Simulated Profit Split (80%)
-          </Badge>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2">
+            <Wallet className="h-3.5 w-3.5" /> Performance Rewards (80% to 100%)
+          </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Trader Payout Requests
+            Trader Reward Portal
           </h1>
           <p className="text-xs sm:text-sm text-slate-400">
-            Funded traders receive an 80% virtual profit split on all net simulated earnings above the initial balance.
+            Funded Master Account traders receive on-demand profit disbursements in under 2 hours.
           </p>
         </div>
 
@@ -131,7 +132,7 @@ export default function PayoutsPage() {
           <Button
             onClick={() => setOpenModal(true)}
             disabled={eligiblePayout <= 0}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
+            className="rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold shadow-[0_0_20px_rgba(139,92,246,0.4)] border border-violet-400/30"
           >
             <DollarSign className="h-4 w-4 mr-1.5" />
             Request Payout
@@ -140,7 +141,7 @@ export default function PayoutsPage() {
       </div>
 
       {feedback && (
-        <div className="p-3 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between">
           <span>{feedback}</span>
           <button onClick={() => setFeedback(null)} className="text-slate-400 hover:text-white">✕</button>
         </div>
@@ -148,25 +149,25 @@ export default function PayoutsPage() {
 
       {/* Account Balance & Profit Cards */}
       {fundedAccounts.length === 0 ? (
-        <Card className="border-slate-800 bg-slate-900/60 text-center py-10">
+        <Card className="border-[#1b2234] bg-gradient-to-b from-[#0e1424] to-[#090d18] text-center py-12 rounded-2xl">
           <CardContent className="space-y-4">
-            <div className="mx-auto h-12 w-12 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+            <div className="mx-auto h-12 w-12 rounded-2xl bg-violet-600/15 border border-violet-500/30 flex items-center justify-center text-violet-400">
               <ShieldCheck className="h-6 w-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-white">No Funded Accounts Yet</h3>
+              <h3 className="text-base font-bold text-white">No Master Accounts Yet</h3>
               <p className="text-xs text-slate-400 max-w-md mx-auto">
-                Payout requests are unlocked once you pass Phase 1 (8%) and Phase 2 (5%) of your evaluation challenge.
+                Payout requests unlock automatically when you pass Phase 1 (8%) and Phase 2 (5%) of your evaluation challenge.
               </p>
             </div>
             <div className="flex justify-center gap-3 pt-2">
               <Link href="/pricing">
-                <Button size="sm" className="bg-blue-600 hover:bg-blue-500 text-xs">
+                <Button size="sm" className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-xs shadow-[0_0_15px_rgba(139,92,246,0.35)]">
                   Start Evaluation Challenge
                 </Button>
               </Link>
               <Link href="/dashboard">
-                <Button size="sm" variant="outline" className="border-slate-700 text-xs">
+                <Button size="sm" variant="outline" className="rounded-xl border-[#1d2a40] text-xs">
                   Check Dashboard Progress
                 </Button>
               </Link>
@@ -175,9 +176,9 @@ export default function PayoutsPage() {
         </Card>
       ) : (
         <div className="grid md:grid-cols-3 gap-4">
-          <Card className="border-slate-800 bg-slate-900/60">
+          <Card className="border-[#1b2234] bg-[#0b101e] rounded-2xl">
             <CardHeader className="pb-2">
-              <CardDescription className="text-xs text-slate-400">Funded Account</CardDescription>
+              <CardDescription className="text-xs text-slate-400">Funded Master Account</CardDescription>
               <CardTitle className="text-lg font-mono text-white">
                 {activeAccount?.account_number}
               </CardTitle>
@@ -194,7 +195,7 @@ export default function PayoutsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-slate-800 bg-slate-900/60">
+          <Card className="border-[#1b2234] bg-[#0b101e] rounded-2xl">
             <CardHeader className="pb-2">
               <CardDescription className="text-xs text-slate-400">Net Simulated Profit</CardDescription>
               <CardTitle className="text-2xl font-mono text-emerald-400">
@@ -206,9 +207,9 @@ export default function PayoutsPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-emerald-500/30 bg-emerald-950/20">
+          <Card className="border-emerald-500/40 bg-gradient-to-b from-emerald-950/20 to-[#0b101e] rounded-2xl shadow-xl shadow-emerald-500/5">
             <CardHeader className="pb-2">
-              <CardDescription className="text-xs text-emerald-300">Your 80% Share</CardDescription>
+              <CardDescription className="text-xs text-emerald-300">Your Performance Share</CardDescription>
               <CardTitle className="text-2xl font-mono text-emerald-300">
                 ${eligiblePayout.toFixed(2)}
               </CardTitle>
@@ -221,10 +222,10 @@ export default function PayoutsPage() {
       )}
 
       {/* Historical Payout Ledger */}
-      <Card className="border-slate-800 bg-slate-900/60">
-        <CardHeader className="pb-3 border-b border-slate-800/80">
+      <Card className="border-[#1b2234] bg-[#080c18] rounded-2xl overflow-hidden">
+        <CardHeader className="pb-3 border-b border-[#1b2234]">
           <CardTitle className="text-base font-bold text-white flex items-center gap-2">
-            <Clock className="h-4 w-4 text-blue-400" />
+            <Clock className="h-4 w-4 text-violet-400" />
             Payout Request History
           </CardTitle>
         </CardHeader>
@@ -236,17 +237,17 @@ export default function PayoutsPage() {
           ) : (
             <table className="w-full text-left font-mono text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-900/60 border-b border-slate-800 text-[10px] text-slate-400 uppercase">
+                <tr className="bg-[#0a0f1c] border-b border-[#1b2234] text-[10px] text-slate-400 uppercase">
                   <th className="p-3">Request Date</th>
                   <th className="p-3">Gross Requested</th>
-                  <th className="p-3">Profit Split (80%)</th>
+                  <th className="p-3">Profit Split</th>
                   <th className="p-3">Status</th>
                   <th className="p-3">Method Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/50">
+              <tbody className="divide-y divide-[#131c2e]">
                 {payouts.map((p) => (
-                  <tr key={p.id} className="hover:bg-slate-950/40">
+                  <tr key={p.id} className="hover:bg-[#0d1424]">
                     <td className="p-3 text-slate-400">
                       {new Date(p.requested_at).toLocaleDateString()}
                     </td>
@@ -280,15 +281,18 @@ export default function PayoutsPage() {
       {/* Request Payout Modal */}
       {openModal && (
         <Dialog open={openModal} onOpenChange={setOpenModal}>
-          <DialogContent className="max-w-md">
+          <DialogContent className="max-w-md bg-[#0a0f1c] border border-[#1b2234] text-slate-100 rounded-2xl">
             <DialogHeader>
-              <DialogTitle className="text-lg">Request Simulated Payout</DialogTitle>
+              <DialogTitle className="text-lg font-bold text-white flex items-center gap-2">
+                <Wallet className="h-5 w-5 text-violet-400" />
+                Request Simulated Payout
+              </DialogTitle>
             </DialogHeader>
             <form onSubmit={handleRequestPayout} className="space-y-4 py-2 text-xs">
               <div className="space-y-1">
                 <label className="text-slate-300 font-medium">Withdrawable Profit</label>
-                <div className="p-2.5 rounded bg-slate-950 border border-slate-800 font-mono text-emerald-400 font-bold">
-                  ${currentProfit.toFixed(2)} available ($ {eligiblePayout.toFixed(2)} after 80% split)
+                <div className="p-2.5 rounded-xl bg-[#060910] border border-[#1b2234] font-mono text-emerald-400 font-bold">
+                  ${currentProfit.toFixed(2)} available (${eligiblePayout.toFixed(2)} after 80% split)
                 </div>
               </div>
 
@@ -302,7 +306,7 @@ export default function PayoutsPage() {
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                   placeholder="e.g. 500.00"
-                  className="bg-slate-950 font-mono"
+                  className="bg-[#060910] font-mono"
                   required
                 />
                 <span className="text-[10px] text-slate-500">
@@ -311,15 +315,15 @@ export default function PayoutsPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-slate-300 font-medium">Simulated Destination Method</label>
+                <label className="text-slate-300 font-medium">Destination Method</label>
                 <select
                   value={method}
                   onChange={(e) => setMethod(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 text-xs text-white"
+                  className="w-full bg-[#060910] border border-[#1b2234] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-1 focus:ring-violet-500"
                 >
                   <option>Crypto USDT (TRC20)</option>
                   <option>Crypto USDC (ERC20)</option>
-                  <option>Direct Bank Wire (Simulated)</option>
+                  <option>Direct Bank Wire</option>
                 </select>
               </div>
 
@@ -330,23 +334,23 @@ export default function PayoutsPage() {
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
                   placeholder="e.g. TXy123456789... or Bank IBAN"
-                  className="bg-slate-950 font-mono"
+                  className="bg-[#060910] font-mono"
                   required
                 />
               </div>
 
-              <div className="bg-slate-950 border border-slate-800 p-2.5 rounded text-[11px] text-slate-400 space-y-1">
-                <strong className="text-slate-200">Payout Processing:</strong> Withdrawal requests undergo risk compliance review prior to settlement. Ensure destination details are accurate.
+              <div className="bg-[#060910] border border-[#1b2234] p-3 rounded-xl text-[11px] text-slate-400 space-y-1">
+                <strong className="text-slate-200">Payout Processing:</strong> Withdrawal requests undergo risk compliance review prior to settlement in under 2 hours.
               </div>
 
               <DialogFooter className="pt-2">
-                <Button type="button" variant="outline" onClick={() => setOpenModal(false)}>
+                <Button type="button" variant="outline" onClick={() => setOpenModal(false)} className="rounded-xl">
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   disabled={submitting}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white"
+                  className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold"
                 >
                   {submitting ? 'Submitting...' : 'Confirm Request'}
                 </Button>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { BookOpen, Search, Edit2, FileText, Check, TrendingUp, TrendingDown } from 'lucide-react';
+import { BookOpen, Search, Edit2, FileText, Check } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -43,11 +43,11 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
   }
 
   return (
-    <Card className="border-slate-800 bg-slate-900/60">
-      <CardHeader className="pb-3 border-b border-slate-800/80">
+    <Card className="border-[#1b2234] bg-[#0b101e]">
+      <CardHeader className="pb-3 border-b border-[#1b2234]">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <CardTitle className="text-base font-bold text-white flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-blue-400" />
+            <BookOpen className="h-5 w-5 text-violet-400" />
             Trading Journal & Reflection Log
           </CardTitle>
           <div className="relative w-full sm:w-64">
@@ -56,7 +56,7 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
               placeholder="Search trade or notes..."
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="h-8 pl-8 text-xs bg-slate-950 border-slate-800"
+              className="h-8 pl-8 text-xs bg-[#060910] border-[#1d2a40]"
             />
           </div>
         </div>
@@ -70,13 +70,13 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
             <p className="text-[11px] text-slate-600">Execute and close trades in the terminal to document notes.</p>
           </div>
         ) : (
-          <div className="divide-y divide-slate-800/60 font-mono text-xs max-h-80 overflow-y-auto">
+          <div className="divide-y divide-[#172033] font-mono text-xs max-h-80 overflow-y-auto">
             {filteredTrades.map((t) => {
               const isProfit = Number(t.realized_pnl) >= 0;
               const isEditing = selectedTrade?.id === t.id;
 
               return (
-                <div key={t.id} className="p-3.5 hover:bg-slate-950/40 transition-colors space-y-2">
+                <div key={t.id} className="p-3.5 hover:bg-[#060910]/50 transition-colors space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <span className="font-bold text-white text-sm">{t.symbol}</span>
@@ -113,7 +113,7 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
 
                   {/* Notes display */}
                   {t.journal_notes && !isEditing && (
-                    <div className="bg-slate-950/80 p-2.5 rounded border border-slate-800/80 text-xs font-sans text-slate-300">
+                    <div className="bg-[#060910] p-2.5 rounded-lg border border-[#1b2234] text-xs font-sans text-slate-300">
                       {t.journal_notes}
                     </div>
                   )}
@@ -126,17 +126,17 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
                         onChange={(e) => setEditingNotes(e.target.value)}
                         placeholder="Write your trade execution notes, setup reasoning, psychological state, and lessons learned..."
                         rows={3}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-md p-2 text-xs text-slate-200 font-sans focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="w-full bg-[#060910] border border-[#1b2234] rounded-xl p-2.5 text-xs text-slate-200 font-sans focus:outline-none focus:ring-2 focus:ring-violet-500"
                       />
                       <div className="flex justify-end space-x-2">
-                        <Button size="sm" variant="outline" onClick={() => setSelectedTrade(null)}>
+                        <Button size="sm" variant="outline" onClick={() => setSelectedTrade(null)} className="rounded-lg">
                           Cancel
                         </Button>
                         <Button
                           size="sm"
                           onClick={() => handleSaveNote(t.id)}
                           disabled={saving}
-                          className="bg-blue-600 hover:bg-blue-500"
+                          className="rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold"
                         >
                           <Check className="h-3.5 w-3.5 mr-1" />
                           {saving ? 'Saving...' : 'Save Reflection'}
@@ -153,4 +153,3 @@ export function TradingJournal({ trades, onRefresh }: TradingJournalProps) {
     </Card>
   );
 }
-

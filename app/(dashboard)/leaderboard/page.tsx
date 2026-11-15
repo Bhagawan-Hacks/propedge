@@ -81,17 +81,17 @@ export default function LeaderboardPage() {
   const rest = traders.slice(3);
 
   return (
-    <div className="flex-1 py-10 px-4 container mx-auto max-w-5xl space-y-10">
+    <div className="flex-1 py-10 px-4 container mx-auto max-w-5xl space-y-10 bg-[#06080f]">
       {/* Header */}
       <div className="text-center space-y-3 max-w-2xl mx-auto">
-        <Badge variant="outline" className="border-amber-500/40 text-amber-400 bg-amber-950/30 px-3 py-1">
-          <Trophy className="h-3.5 w-3.5 mr-1 text-amber-400 inline" /> Trader Hall of Fame
-        </Badge>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-semibold text-amber-400 uppercase tracking-wider">
+          <Trophy className="h-3.5 w-3.5" /> Trader Hall of Fame
+        </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          PropEdge Leaderboard
+          Global Leaderboard
         </h1>
         <p className="text-xs sm:text-sm text-slate-400">
-          Ranked by highest net simulated profits and disciplined risk performance. Paper trading evaluations on real Binance market data.
+          Ranked by highest net simulated profits and disciplined risk performance on live Binance market liquidity feeds.
         </p>
       </div>
 
@@ -99,7 +99,7 @@ export default function LeaderboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end pt-4">
         {/* Silver Rank 2 */}
         {top3[1] && (
-          <Card className="border-slate-700 bg-slate-900/70 p-5 text-center space-y-2 order-2 md:order-1 relative">
+          <Card className="border-[#1b2234] bg-[#0b101e] p-5 text-center space-y-2 order-2 md:order-1 relative">
             <div className="mx-auto h-12 w-12 rounded-full bg-slate-400/10 border border-slate-400/30 flex items-center justify-center text-slate-300">
               <Medal className="h-6 w-6" />
             </div>
@@ -119,9 +119,9 @@ export default function LeaderboardPage() {
 
         {/* Gold Rank 1 */}
         {top3[0] && (
-          <Card className="border-amber-500/80 bg-gradient-to-b from-amber-950/20 to-slate-900 p-6 text-center space-y-2.5 order-1 md:order-2 shadow-xl shadow-amber-500/10 scale-105 relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="bg-amber-500 text-slate-950 text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+          <Card className="border-amber-500/80 bg-gradient-to-b from-[#1a1200] to-[#0b101e] p-6 text-center space-y-2.5 order-1 md:order-2 shadow-xl shadow-amber-500/10 scale-105 relative">
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span className="bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 text-[10px] font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-amber-500/30">
                 Champion
               </span>
             </div>
@@ -144,7 +144,7 @@ export default function LeaderboardPage() {
 
         {/* Bronze Rank 3 */}
         {top3[2] && (
-          <Card className="border-amber-800/40 bg-slate-900/70 p-5 text-center space-y-2 order-3 relative">
+          <Card className="border-amber-800/40 bg-[#0b101e] p-5 text-center space-y-2 order-3 relative">
             <div className="mx-auto h-12 w-12 rounded-full bg-amber-700/10 border border-amber-700/30 flex items-center justify-center text-amber-600">
               <Award className="h-6 w-6" />
             </div>
@@ -164,17 +164,17 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Full Leaderboard Table */}
-      <Card className="border-slate-800 bg-slate-900/60">
-        <CardHeader className="pb-3 border-b border-slate-800/80">
+      <Card className="border-[#1b2234] bg-[#080c18]">
+        <CardHeader className="pb-3 border-b border-[#1b2234]">
           <CardTitle className="text-base font-bold text-white flex items-center gap-2">
-            <Flame className="h-4 w-4 text-amber-400" />
+            <Flame className="h-4 w-4 text-violet-400" />
             Top Simulated Trader Standings
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0 overflow-auto">
           <table className="w-full text-left font-mono text-xs border-collapse">
             <thead>
-              <tr className="bg-slate-900/80 border-b border-slate-800 text-[10px] text-slate-400 uppercase">
+              <tr className="bg-[#0a0f1c] border-b border-[#1b2234] text-[10px] text-slate-400 uppercase">
                 <th className="p-3 text-center">Rank</th>
                 <th className="p-3">Trader</th>
                 <th className="p-3">Account</th>
@@ -185,9 +185,9 @@ export default function LeaderboardPage() {
                 <th className="p-3 text-right">Trades</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/40">
+            <tbody className="divide-y divide-[#131c2e]">
               {traders.map((trader) => (
-                <tr key={trader.accountNumber} className="hover:bg-slate-950/40 transition-colors">
+                <tr key={trader.accountNumber} className="hover:bg-[#0d1424] transition-colors">
                   <td className="p-3 text-center font-bold">
                     {trader.rank === 1 ? '🥇' : trader.rank === 2 ? '🥈' : trader.rank === 3 ? '🥉' : `#${trader.rank}`}
                   </td>

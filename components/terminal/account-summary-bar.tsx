@@ -20,7 +20,7 @@ export function AccountSummaryBar({
 }: AccountSummaryBarProps) {
   if (!account) {
     return (
-      <div className="bg-[#090e17] border border-slate-800 rounded-lg p-2.5 flex items-center justify-between text-xs text-slate-400">
+      <div className="bg-[#080c18] border border-[#1b2234] rounded-2xl p-3 flex items-center justify-between text-xs text-slate-400">
         <span>No trading account selected.</span>
       </div>
     );
@@ -46,13 +46,13 @@ export function AccountSummaryBar({
   const isBreached = account.status === 'breached';
 
   return (
-    <div className="bg-[#090e17] border border-slate-800 rounded-lg px-3 py-2 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+    <div className="bg-[#080c18] border border-[#1b2234] rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs font-mono shadow-xl">
       {/* Account Switcher & Status */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2.5">
         <select
           value={account.id}
           onChange={(e) => onSelectAccount(e.target.value)}
-          className="bg-slate-950 border border-slate-800 text-white rounded px-2 py-1 text-xs font-bold focus:outline-none"
+          className="bg-[#06080f] border border-[#1d2a40] text-white rounded-xl px-3 py-1.5 text-xs font-bold focus:outline-none focus:ring-1 focus:ring-violet-500"
         >
           {accounts.map((acc) => (
             <option key={acc.id} value={acc.id}>
@@ -71,52 +71,52 @@ export function AccountSummaryBar({
               ? 'phase2'
               : 'phase1'
           }
-          className="uppercase text-[10px] px-2 py-0.5"
+          className="uppercase text-[10px] px-2.5 py-0.5"
         >
           {account.status}
         </Badge>
       </div>
 
       {/* Metrics Row */}
-      <div className="flex items-center flex-wrap gap-4 text-slate-300">
+      <div className="flex items-center flex-wrap gap-5 text-slate-300">
         <div>
-          <span className="text-slate-500 text-[10px] block">BALANCE</span>
+          <span className="text-slate-500 text-[10px] block font-sans">BALANCE</span>
           <span className="font-bold text-white text-xs">${balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
         </div>
 
         <div>
-          <span className="text-slate-500 text-[10px] block">EQUITY</span>
+          <span className="text-slate-500 text-[10px] block font-sans">EQUITY</span>
           <span className={`font-bold text-xs ${unrealizedPnlTotal >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
             ${equity.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
         </div>
 
         <div>
-          <span className="text-slate-500 text-[10px] block">MARGIN USED</span>
+          <span className="text-slate-500 text-[10px] block font-sans">MARGIN USED</span>
           <span className="font-semibold text-slate-300 text-xs">${marginUsed.toFixed(2)}</span>
         </div>
 
         <div>
-          <span className="text-slate-500 text-[10px] block">FREE MARGIN</span>
+          <span className="text-slate-500 text-[10px] block font-sans">FREE MARGIN</span>
           <span className="font-semibold text-slate-300 text-xs">${freeMargin.toFixed(2)}</span>
         </div>
 
         <div>
-          <span className="text-slate-500 text-[10px] block">DAILY P&L (5% Max)</span>
+          <span className="text-slate-500 text-[10px] block font-sans">DAILY P&L (5% Max)</span>
           <span className={`font-bold text-xs ${isProfitDaily ? 'text-emerald-400' : 'text-rose-400'}`}>
             {isProfitDaily ? '+' : ''}${dailyPnl.toFixed(2)} ({isProfitDaily ? '+' : ''}{dailyPnlPct.toFixed(2)}%)
           </span>
         </div>
 
         <div>
-          <span className="text-slate-500 text-[10px] block">DRAWDOWN (10% Max)</span>
+          <span className="text-slate-500 text-[10px] block font-sans">DRAWDOWN (10% Max)</span>
           <div className="flex items-center space-x-1.5">
             <span className={`font-bold text-xs ${drawdownPct >= 8 ? 'text-rose-400' : drawdownPct >= 5 ? 'text-amber-400' : 'text-slate-300'}`}>
               {drawdownPct.toFixed(2)}%
             </span>
-            <div className="w-12 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+            <div className="w-12 h-1.5 bg-[#121827] rounded-full overflow-hidden">
               <div
-                className={`h-full ${drawdownPct >= 8 ? 'bg-rose-500' : drawdownPct >= 5 ? 'bg-amber-500' : 'bg-blue-500'}`}
+                className={`h-full ${drawdownPct >= 8 ? 'bg-rose-500' : drawdownPct >= 5 ? 'bg-amber-500' : 'bg-violet-500'}`}
                 style={{ width: `${Math.min(100, (drawdownPct / 10) * 100)}%` }}
               />
             </div>
@@ -126,4 +126,3 @@ export function AccountSummaryBar({
     </div>
   );
 }
-

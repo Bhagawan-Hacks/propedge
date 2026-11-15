@@ -31,11 +31,11 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
       {/* Win Rate */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Win Rate</span>
-            <Target className="h-4 w-4 text-blue-400" />
+            <Target className="h-4 w-4 text-violet-400" />
           </div>
           <div className="text-xl font-bold font-mono text-white">
             {winRate.toFixed(1)}%
@@ -47,7 +47,7 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
       </Card>
 
       {/* Profit Factor */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Profit Factor</span>
@@ -63,7 +63,7 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
       </Card>
 
       {/* Avg R:R */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Avg Risk:Reward</span>
@@ -79,7 +79,7 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
       </Card>
 
       {/* Best Trade */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Best Trade</span>
@@ -95,7 +95,7 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
       </Card>
 
       {/* Worst Trade */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Worst Trade</span>
@@ -111,11 +111,11 @@ export function MetricsGrid({ trades }: MetricsGridProps) {
       </Card>
 
       {/* Total Realized P&L */}
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="border-[#1b2234] bg-[#0b101e]">
         <CardContent className="p-4 space-y-1">
           <div className="flex items-center justify-between text-slate-400 text-xs">
             <span>Net Realized P&L</span>
-            <DollarSign className="h-4 w-4 text-blue-400" />
+            <DollarSign className="h-4 w-4 text-violet-400" />
           </div>
           <div className={`text-xl font-bold font-mono ${totalRealizedPnl >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
             {totalRealizedPnl >= 0 ? '+' : ''}${totalRealizedPnl.toFixed(2)}

@@ -161,7 +161,7 @@ export default function TerminalPage() {
   }, 0);
 
   return (
-    <div className="flex-1 flex flex-col p-2 gap-2 bg-[#060910] overflow-hidden min-h-[calc(100vh-80px)]">
+    <div className="flex-1 flex flex-col p-2.5 gap-2.5 bg-[#06080f] overflow-hidden min-h-[calc(100vh-80px)]">
       {/* Top Account Metrics Toolbar */}
       <AccountSummaryBar
         account={activeAccount}

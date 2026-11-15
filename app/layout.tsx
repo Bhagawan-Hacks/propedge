@@ -5,8 +5,8 @@ import { SimulationBanner } from '@/components/layout/simulation-banner';
 import { Navbar } from '@/components/layout/navbar';
 
 export const metadata: Metadata = {
-  title: 'PropEdge — Global Proprietary Trading Evaluation & Funded Accounts',
-  description: 'Trade institutional simulated capital with real-time market liquidity feeds. Pass evaluation phases, respect drawdown limits, and unlock up to an 80% performance profit split.',
+  title: 'FundingPips — Your Skill Is Our Capital | Evaluation & Funded Accounts',
+  description: 'Trade up to $300,000 in simulated capital. Pass evaluation phases, trade without arbitrary time limits, and receive fast on-demand payouts with up to 100% profit split.',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#0b0f17] text-slate-100 flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950">
+      <body className="min-h-screen bg-[#06080f] text-slate-100 flex flex-col antialiased selection:bg-violet-600 selection:text-white">
         <Providers>
           <SimulationBanner />
           <Navbar />

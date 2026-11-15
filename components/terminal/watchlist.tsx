@@ -40,7 +40,6 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    // Connect browser directly to Binance Combined WebSocket Tickers stream
     const streams = DEFAULT_SYMBOLS.map((s) => `${s.symbol.toLowerCase()}@ticker`).join('/');
     const wsUrl = `wss://stream.binance.com:9443/stream?streams=${streams}`;
 
@@ -94,29 +93,29 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
   );
 
   return (
-    <div className="flex flex-col h-full bg-[#090e17] border border-slate-800 rounded-lg overflow-hidden text-xs">
+    <div className="flex flex-col h-full bg-[#080c18] border border-[#1b2234] rounded-2xl overflow-hidden text-xs shadow-xl">
       {/* Header & Filter */}
-      <div className="p-2.5 bg-slate-950/90 border-b border-slate-800 space-y-2">
+      <div className="p-3 bg-[#0a0f1c] border-b border-[#1b2234] space-y-2.5">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-slate-200 tracking-wide text-xs">MARKET WATCH</span>
-          <span className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-            LIVE WS
+          <span className="font-extrabold text-white tracking-wider text-xs">MARKET WATCH</span>
+          <span className="text-[10px] text-emerald-400 font-mono flex items-center gap-1.5 font-semibold">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            LIVE LIQUIDITY
           </span>
         </div>
         <div className="relative">
-          <Search className="h-3.5 w-3.5 absolute left-2 top-2 text-slate-500" />
+          <Search className="h-3.5 w-3.5 absolute left-2.5 top-2.5 text-slate-500" />
           <Input
-            placeholder="Search coin..."
+            placeholder="Search market..."
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="h-7 pl-7 text-xs bg-slate-900 border-slate-800"
+            className="h-8 pl-8 text-xs bg-[#06080f] border-[#1b2234] rounded-xl"
           />
         </div>
       </div>
 
       {/* Symbol Table Header */}
-      <div className="grid grid-cols-4 px-3 py-1.5 bg-slate-900/60 border-b border-slate-800 text-[10px] text-slate-400 font-semibold uppercase">
+      <div className="grid grid-cols-4 px-3 py-2 bg-[#090d19] border-b border-[#1b2234] text-[10px] text-slate-400 font-semibold uppercase">
         <span className="col-span-1">Symbol</span>
         <span className="text-right">Bid</span>
         <span className="text-right">Ask</span>
@@ -124,7 +123,7 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
       </div>
 
       {/* Symbol Rows */}
-      <div className="flex-1 overflow-y-auto divide-y divide-slate-800/40">
+      <div className="flex-1 overflow-y-auto divide-y divide-[#131c2e]">
         {filteredSymbols.map((item) => {
           const isSelected = item.symbol === selectedSymbol;
           const isPositive = item.change24h >= 0;
@@ -133,10 +132,10 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
             <div
               key={item.symbol}
               onClick={() => onSelectSymbol(item.symbol)}
-              className={`grid grid-cols-4 px-3 py-2 cursor-pointer transition-colors items-center font-mono select-none ${
+              className={`grid grid-cols-4 px-3 py-2.5 cursor-pointer transition-colors items-center font-mono select-none ${
                 isSelected
-                  ? 'bg-blue-600/15 border-l-2 border-blue-500 text-white'
-                  : 'hover:bg-slate-900/60 text-slate-300'
+                  ? 'bg-violet-600/15 border-l-2 border-violet-500 text-white'
+                  : 'hover:bg-white/[0.03] text-slate-300'
               }`}
             >
               <div className="col-span-1 flex flex-col">
@@ -159,4 +158,3 @@ export function Watchlist({ selectedSymbol, onSelectSymbol, onPriceUpdate }: Wat
     </div>
   );
 }
-

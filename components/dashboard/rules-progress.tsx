@@ -29,11 +29,11 @@ export function RulesProgress({ account }: RulesProgressProps) {
   const daysProgress = Math.min(100, (risk.currentTradingDays / risk.minTradingDays) * 100);
 
   return (
-    <Card className="border-slate-800 bg-slate-900/60">
-      <CardHeader className="pb-3 border-b border-slate-800/80">
+    <Card className="border-[#1b2234] bg-[#0b101e]">
+      <CardHeader className="pb-3 border-b border-[#1b2234]">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-bold text-white flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-blue-400" />
+            <ShieldCheck className="h-5 w-5 text-violet-400" />
             Evaluation Objectives & Risk Parameters
           </CardTitle>
           <Badge

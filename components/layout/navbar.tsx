@@ -14,7 +14,9 @@ import {
   User, 
   Menu, 
   X,
-  Sparkles
+  Sparkles,
+  Zap,
+  ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
@@ -71,8 +73,8 @@ export function Navbar() {
   }
 
   const navLinks = [
-    { label: 'Pricing Plans', href: '/pricing', icon: CreditCard },
-    { label: 'Terminal', href: '/terminal', icon: LineChart },
+    { label: 'Evaluation Models', href: '/pricing', icon: CreditCard },
+    { label: 'Web Terminal', href: '/terminal', icon: LineChart },
     { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
     { label: 'Payouts', href: '/payouts', icon: TrendingUp },
@@ -81,21 +83,40 @@ export function Navbar() {
   const isAdmin = profile?.role === 'admin';
 
   return (
-    <header className="border-b border-slate-800 bg-slate-950/90 backdrop-blur-md sticky top-[29px] z-40">
+    <header className="border-b border-[#1b2234] bg-[#06080f]/90 backdrop-blur-xl sticky top-[33px] z-40 transition-all">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <Link href="/" className="flex items-center space-x-2.5 group">
-          <div className="h-9 w-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-all shadow-sm">
-            <TrendingUp className="h-5 w-5 text-emerald-400" />
+        {/* FundingPips-Style Brand Logo */}
+        <Link href="/" className="flex items-center space-x-3 group">
+          <div className="relative flex items-center justify-center">
+            <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-violet-600 via-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(139,92,246,0.45)] group-hover:scale-105 transition-transform duration-200">
+              {/* Sharp geometric chevron pip icon */}
+              <svg 
+                className="w-5 h-5 text-white" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="m13 17 5-5-5-5M6 17l5-5-5-5" />
+              </svg>
+            </div>
+            <span className="absolute -bottom-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-[#06080f]" />
           </div>
+
           <div className="flex flex-col">
-            <span className="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
-              PropEdge
-              <Badge variant="outline" className="text-[10px] py-0 px-1.5 border-emerald-500/30 text-emerald-400 bg-emerald-950/20 font-semibold tracking-wider">
-                BETA
-              </Badge>
+            <div className="flex items-center gap-1.5">
+              <span className="font-extrabold text-xl tracking-tight text-white group-hover:text-slate-100 transition">
+                Funding<span className="text-violet-400">Pips</span>
+              </span>
+              <span className="text-[9px] uppercase px-1.5 py-0.5 rounded-full font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">
+                PRO
+              </span>
+            </div>
+            <span className="text-[9px] text-slate-400 font-mono tracking-wider uppercase">
+              YOUR SKILL IS OUR CAPITAL
             </span>
-            <span className="text-[10px] text-slate-400 font-mono tracking-wider">EVALUATION & FUNDED</span>
           </div>
         </Link>
 
@@ -108,13 +129,13 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center space-x-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                   isActive
-                    ? 'bg-slate-800/80 text-white font-medium border border-slate-700/60 shadow-sm'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-900/70'
+                    ? 'bg-[#151c2e] text-white border border-[#232f48] shadow-sm'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <Icon className="h-4 w-4" />
+                <Icon className={`h-3.5 w-3.5 ${isActive ? 'text-violet-400' : 'text-slate-500'}`} />
                 <span>{link.label}</span>
               </Link>
             );
@@ -123,28 +144,28 @@ export function Navbar() {
           {isAdmin && (
             <Link
               href="/admin"
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                 pathname.startsWith('/admin')
                   ? 'bg-amber-950/40 border border-amber-500/30 text-amber-300'
                   : 'text-amber-400/90 hover:bg-amber-950/30 hover:text-amber-200'
               }`}
             >
-              <ShieldAlert className="h-4 w-4 text-amber-400" />
-              <span>Admin Panel</span>
+              <ShieldAlert className="h-3.5 w-3.5 text-amber-400" />
+              <span>Admin</span>
             </Link>
           )}
         </nav>
 
-        {/* User Account Actions */}
+        {/* User Account Actions - FundingPips Glowing Pill CTA */}
         <div className="hidden md:flex items-center space-x-3">
           {user ? (
             <div className="flex items-center space-x-3">
-              <div className="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-full py-1 px-3">
-                <div className="h-6 w-6 rounded-full bg-blue-600/30 border border-blue-500/40 flex items-center justify-center text-xs font-bold text-blue-300 uppercase">
+              <div className="flex items-center space-x-2.5 bg-[#0e1422] border border-[#1b2336] rounded-full py-1 px-3.5">
+                <div className="h-6 w-6 rounded-full bg-violet-600/30 border border-violet-500/40 flex items-center justify-center text-xs font-bold text-violet-300 uppercase">
                   {profile?.full_name?.[0] || user.email?.[0] || 'T'}
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-medium text-slate-200 truncate max-w-[120px]">
+                  <span className="text-xs font-semibold text-slate-200 truncate max-w-[120px]">
                     {profile?.full_name || user.email?.split('@')[0]}
                   </span>
                 </div>
@@ -158,7 +179,7 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 onClick={handleLogout}
-                className="text-slate-400 hover:text-rose-400 hover:bg-rose-950/20"
+                className="text-slate-400 hover:text-rose-400 hover:bg-rose-950/20 h-8 w-8 p-0 rounded-full"
                 title="Log out"
               >
                 <LogOut className="h-4 w-4" />
@@ -167,13 +188,21 @@ export function Navbar() {
           ) : (
             <div className="flex items-center space-x-2">
               <Link href="/login">
-                <Button variant="ghost" size="sm">
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-slate-300 hover:text-white font-semibold text-xs px-4"
+                >
                   Sign In
                 </Button>
               </Link>
-              <Link href="/signup">
-                <Button size="sm" className="bg-blue-600 hover:bg-blue-500 text-white font-medium">
-                  Start Challenge
+              <Link href="/pricing">
+                <Button 
+                  size="sm" 
+                  className="rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-bold text-xs px-5 shadow-[0_0_20px_rgba(139,92,246,0.35)] border border-violet-400/30 active:scale-95 transition"
+                >
+                  <Sparkles className="h-3.5 w-3.5 mr-1.5 text-violet-200" />
+                  Buy Challenge
                 </Button>
               </Link>
             </div>
@@ -186,7 +215,7 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-slate-300"
+            className="text-slate-300 hover:text-white"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -195,7 +224,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-slate-950/98 px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-2 duration-150">
+        <div className="md:hidden border-b border-[#1b2234] bg-[#070a14]/98 px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top-2 duration-150 backdrop-blur-xl">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive = pathname.startsWith(link.href);
@@ -204,10 +233,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium ${
+                className={`flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold ${
                   isActive
-                    ? 'bg-slate-800 text-blue-400'
-                    : 'text-slate-300 hover:bg-slate-900'
+                    ? 'bg-violet-600/15 text-violet-300 border border-violet-500/30'
+                    : 'text-slate-300 hover:bg-white/5'
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -220,14 +249,14 @@ export function Navbar() {
             <Link
               href="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium text-amber-300 bg-amber-950/40 border border-amber-500/30"
+              className="flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-amber-300 bg-amber-950/40 border border-amber-500/30"
             >
               <ShieldAlert className="h-4 w-4 text-amber-400" />
               <span>Admin Panel</span>
             </Link>
           )}
 
-          <div className="pt-4 border-t border-slate-800">
+          <div className="pt-4 border-t border-[#1b2234]">
             {user ? (
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 px-3 py-1">
@@ -236,7 +265,7 @@ export function Navbar() {
                 </div>
                 <Button
                   variant="outline"
-                  className="w-full justify-center text-rose-400 border-rose-500/30 hover:bg-rose-950/30"
+                  className="w-full justify-center text-rose-400 border-rose-500/30 hover:bg-rose-950/30 rounded-xl"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     handleLogout();
@@ -249,13 +278,13 @@ export function Navbar() {
             ) : (
               <div className="grid grid-cols-2 gap-2 pt-2">
                 <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full rounded-xl">
                     Sign In
                   </Button>
                 </Link>
-                <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-500">
-                    Sign Up
+                <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 shadow-[0_0_20px_rgba(139,92,246,0.35)]">
+                    Buy Challenge
                   </Button>
                 </Link>
               </div>
@@ -266,4 +295,3 @@ export function Navbar() {
     </header>
   );
 }
-

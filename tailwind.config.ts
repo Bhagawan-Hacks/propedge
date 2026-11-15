@@ -53,11 +53,31 @@ const config: Config = {
         trading: {
           bull: "#10b981", // green-500
           bear: "#ef4444", // red-500
-          bg: "#0b0e14",
-          card: "#121824",
-          border: "#1f293d",
-          accent: "#3b82f6",
+          bg: "#06080f",
+          card: "#0f1523",
+          border: "#1e2638",
+          accent: "#8b5cf6",
         },
+        fp: {
+          bg: "#06080f",
+          surface: "#0a0e1a",
+          card: "#101626",
+          cardHover: "#151e33",
+          border: "#1d2538",
+          borderLight: "#2c3852",
+          purple: "#8b5cf6",
+          purpleDark: "#6d28d9",
+          purpleLight: "#a78bfa",
+          emerald: "#10b981",
+          cyan: "#06b6d4",
+          gold: "#f59e0b",
+        },
+      },
+      boxShadow: {
+        "glow-purple": "0 0 25px -5px rgba(139, 92, 246, 0.4)",
+        "glow-purple-lg": "0 0 50px -10px rgba(139, 92, 246, 0.35)",
+        "glow-emerald": "0 0 25px -5px rgba(16, 185, 129, 0.3)",
+        "fp-card": "0 8px 30px rgba(0, 0, 0, 0.45)",
       },
       borderRadius: {
         lg: "var(--radius)",
