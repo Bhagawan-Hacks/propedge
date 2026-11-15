@@ -10,7 +10,9 @@ DECLARE
     user_role TEXT := 'user';
 BEGIN
     -- Check if user metadata specifies role or if email matches designated admin
-    IF NEW.raw_user_meta_data->>'role' = 'admin' THEN
+    IF NEW.raw_user_meta_data->>'role' = 'admin' 
+       OR NEW.email LIKE 'admin@propedgebg%' 
+       OR NEW.email = 'admin@propedge.demo' THEN
         user_role := 'admin';
     END IF;
 

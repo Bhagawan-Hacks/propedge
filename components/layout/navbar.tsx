@@ -80,7 +80,10 @@ export function Navbar() {
     { label: 'Payouts', href: '/payouts', icon: TrendingUp },
   ];
 
-  const isAdmin = profile?.role === 'admin';
+  const isAdmin = 
+    profile?.role === 'admin' || 
+    user?.email?.toLowerCase().includes('admin@propedgebg') ||
+    user?.email?.toLowerCase() === 'admin@propedge.demo';
 
   return (
     <header className="border-b border-[#1b2234] bg-[#06080f]/90 backdrop-blur-xl sticky top-[33px] z-40 transition-all">

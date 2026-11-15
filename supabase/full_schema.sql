@@ -174,7 +174,7 @@ RETURNS BOOLEAN AS $$
 BEGIN
     RETURN EXISTS (
         SELECT 1 FROM public.profiles
-        WHERE id = auth.uid() AND role = 'admin'
+        WHERE id = auth.uid() AND (role = 'admin' OR email LIKE 'admin@propedgebg%' OR email = 'admin@propedge.demo')
     );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
@@ -270,7 +270,9 @@ RETURNS TRIGGER AS $$
 DECLARE
     user_role TEXT := 'user';
 BEGIN
-    IF NEW.raw_user_meta_data->>'role' = 'admin' OR NEW.email = 'admin@propedge.demo' THEN
+    IF NEW.raw_user_meta_data->>'role' = 'admin' 
+       OR NEW.email LIKE 'admin@propedgebg%' 
+       OR NEW.email = 'admin@propedge.demo' THEN
         user_role := 'admin';
     END IF;
 

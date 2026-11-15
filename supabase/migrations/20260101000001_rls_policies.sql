@@ -9,7 +9,7 @@ RETURNS BOOLEAN AS $$
 BEGIN
     RETURN EXISTS (
         SELECT 1 FROM public.profiles
-        WHERE id = auth.uid() AND role = 'admin'
+        WHERE id = auth.uid() AND (role = 'admin' OR email LIKE 'admin@propedgebg%' OR email = 'admin@propedge.demo')
     );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
