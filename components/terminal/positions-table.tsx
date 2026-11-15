@@ -245,7 +245,7 @@ export function PositionsTable({ positions, trades, orders, livePrices = {}, onR
                       </Badge>
                     </td>
                     <td className="p-3 text-slate-300">{ord.size}</td>
-                    <td className="p-3 text-white font-bold">${Number(ord.price).toFixed(2)}</td>
+                    <td className="p-3 text-white font-bold">${Number(ord.requested_price).toFixed(2)}</td>
                     <td className="p-3">
                       <Badge variant="outline" className="text-[9px] uppercase">
                         {ord.status}
