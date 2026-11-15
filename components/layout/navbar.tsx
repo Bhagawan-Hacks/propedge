@@ -16,7 +16,8 @@ import {
   X,
   Sparkles,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Award
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/lib/supabase/client';
@@ -76,6 +77,7 @@ export function Navbar() {
     { label: 'Evaluation Models', href: '/pricing', icon: CreditCard },
     { label: 'Web Terminal', href: '/terminal', icon: LineChart },
     { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    { label: 'Certificates', href: '/certificate', icon: Award },
     { label: 'Leaderboard', href: '/leaderboard', icon: Trophy },
     { label: 'Payouts', href: '/payouts', icon: TrendingUp },
   ];
@@ -88,7 +90,7 @@ export function Navbar() {
   return (
     <header className="border-b border-[#1b2234] bg-[#06080f]/90 backdrop-blur-xl sticky top-[33px] z-40 transition-all">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* FundingPips-Style Brand Logo */}
+        {/* PropEdge Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
           <div className="relative flex items-center justify-center">
             <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-violet-600 via-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(139,92,246,0.45)] group-hover:scale-105 transition-transform duration-200">
@@ -111,7 +113,7 @@ export function Navbar() {
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-extrabold text-xl tracking-tight text-white group-hover:text-slate-100 transition">
-                Funding<span className="text-violet-400">Pips</span>
+                Prop<span className="text-violet-400">Edge</span>
               </span>
               <span className="text-[9px] uppercase px-1.5 py-0.5 rounded-full font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">
                 PRO
@@ -159,7 +161,7 @@ export function Navbar() {
           )}
         </nav>
 
-        {/* User Account Actions - FundingPips Glowing Pill CTA */}
+        {/* User Account Actions - PropEdge Glowing Pill CTA */}
         <div className="hidden md:flex items-center space-x-3">
           {user ? (
             <div className="flex items-center space-x-3">

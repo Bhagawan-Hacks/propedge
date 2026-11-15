@@ -12,7 +12,8 @@ import {
   PlusCircle, 
   DollarSign, 
   ArrowRight,
-  AlertCircle
+  AlertCircle,
+  Award
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -28,7 +29,7 @@ const MOCK_ACCOUNT: TradingAccount = {
   id: '00000000-0000-0000-0000-000000000001',
   user_id: '00000000-0000-0000-0000-000000000001',
   plan_id: '11111111-1111-1111-1111-111111111111',
-  account_number: 'FP-DEMO-1001',
+  account_number: 'PE-DEMO-1001',
   status: 'phase1',
   initial_balance: 10000,
   current_balance: 10450,
@@ -178,6 +179,16 @@ export default function DashboardPage() {
               <Button size="sm" className="rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs shadow-lg shadow-emerald-600/20">
                 <DollarSign className="h-3.5 w-3.5 mr-1" />
                 Request Payout
+              </Button>
+            </Link>
+          )}
+
+          {/* Certificate button — visible for phase2 & funded accounts */}
+          {(selectedAccount.status === 'phase2' || selectedAccount.status === 'funded' || selectedAccount.status === 'passed') && (
+            <Link href="/certificate">
+              <Button size="sm" className="rounded-xl bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 border border-amber-400/30 gap-1.5">
+                <Award className="h-3.5 w-3.5" />
+                View Certificate
               </Button>
             </Link>
           )}

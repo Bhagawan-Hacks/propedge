@@ -169,7 +169,7 @@ export default function HomePage() {
 
   return (
     <div className="flex-1 flex flex-col bg-[#06080f] text-slate-100 overflow-x-hidden">
-      {/* 1. Hero Section with Signature FundingPips Purple Glow & Tagline */}
+      {/* 1. Hero Section with Signature PropEdge Purple Glow & Tagline */}
       <section className="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32 border-b border-[#1b2234]">
         {/* Subtle radial ambient purple glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.18)_0%,rgba(109,40,217,0.06)_40%,transparent_70%)] pointer-events-none" />
@@ -260,7 +260,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. THE SIGNATURE FUNDINGPIPS INTERACTIVE EVALUATION SELECTOR & MATRIX */}
+      {/* 3. THE SIGNATURE PROPEDGE INTERACTIVE EVALUATION SELECTOR & MATRIX */}
       <section id="evaluation" className="py-20 md:py-28 border-b border-[#1b2234] bg-[#06080f] relative">
         <div className="container mx-auto px-4 max-w-6xl">
           {/* Section Header */}
@@ -343,7 +343,7 @@ export default function HomePage() {
                   )}
                   <div className="text-sm sm:text-base font-extrabold">{item.label}</div>
                   <div className="text-[11px] font-mono text-slate-400 pt-0.5">
-                    ${item.size === 10000 ? 60 : item.size === 5000 ? 32 : item.size === 25000 ? 139 : item.size === 50000 ? 239 : item.size === 100000 ? 399 : 799}
+                    ${item.price}
                   </div>
                 </button>
               );
@@ -480,7 +480,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. FundingPips Trader Progression Path: Student -> Practitioner -> Master */}
+      {/* 4. PropEdge Trader Progression Path: Student -> Practitioner -> Master */}
       <section className="py-20 md:py-28 border-b border-[#1b2234] bg-[#070b14] relative">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center space-y-3 mb-16">
@@ -748,7 +748,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. FundingPips Modern Obsidian Footer */}
+      {/* 9. PropEdge Modern Obsidian Footer */}
       <footer className="py-16 bg-[#04060a] border-t border-[#151c2e] text-xs text-slate-400 space-y-10 px-4">
         <div className="container mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="space-y-3 col-span-2 md:col-span-1">
@@ -759,7 +759,7 @@ export default function HomePage() {
                 </svg>
               </div>
               <span className="font-extrabold text-lg text-white">
-                Funding<span className="text-violet-400">Pips</span>
+                Prop<span className="text-violet-400">Edge</span>
               </span>
             </div>
             <p className="text-[11px] text-slate-400 leading-relaxed">
@@ -804,10 +804,10 @@ export default function HomePage() {
 
         <div className="container mx-auto max-w-6xl pt-6 border-t border-[#151c2e] space-y-3 text-[11px] text-slate-500">
           <p className="leading-relaxed">
-            <strong>Regulatory & Risk Disclosure:</strong> All accounts provided by FundingPips are simulated accounts operating in a simulated environment using live market liquidity feeds. Trading financial instruments involves significant risk of loss and is not suitable for every individual. FundingPips does not act as a broker-dealer or custodian of funds. Passing evaluation phases unlocks simulated funded capital and profit-sharing agreements pursuant to firm terms.
+            <strong>Regulatory & Risk Disclosure:</strong> All accounts provided by PropEdge are simulated accounts operating in a simulated environment using live market liquidity feeds. Trading financial instruments involves significant risk of loss and is not suitable for every individual. PropEdge does not act as a broker-dealer or custodian of funds. Passing evaluation phases unlocks simulated funded capital and profit-sharing agreements pursuant to firm terms.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 text-[10px] text-slate-600">
-            <span>© {new Date().getFullYear()} FundingPips Technologies Inc. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} PropEdge Technologies Inc. All rights reserved.</span>
             <span>Your skill is our capital.</span>
           </div>
         </div>

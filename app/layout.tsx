@@ -5,7 +5,7 @@ import { SimulationBanner } from '@/components/layout/simulation-banner';
 import { Navbar } from '@/components/layout/navbar';
 
 export const metadata: Metadata = {
-  title: 'FundingPips — Your Skill Is Our Capital | Evaluation & Funded Accounts',
+  title: 'PropEdge — Your Skill Is Our Capital | Evaluation & Funded Accounts',
   description: 'Trade up to $300,000 in simulated capital. Pass evaluation phases, trade without arbitrary time limits, and receive fast on-demand payouts with up to 100% profit split.',
 };
 

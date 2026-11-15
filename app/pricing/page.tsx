@@ -34,10 +34,22 @@ import { createClient } from '@/lib/supabase/client';
 
 const PLANS = [
   {
+    id: '00000000-0000-0000-0000-000000005000',
+    name: 'Micro $5K',
+    balance: 5000,
+    price: 32,
+    phase1Target: 400,
+    phase2Target: 250,
+    dailyLoss: 250,
+    maxDrawdown: 500,
+    popular: false,
+    description: 'Start small and prove your edge with a compact evaluation account.',
+  },
+  {
     id: '11111111-1111-1111-1111-111111111111',
     name: 'Starter $10K',
     balance: 10000,
-    price: 99,
+    price: 60,
     phase1Target: 800,
     phase2Target: 500,
     dailyLoss: 500,
@@ -49,19 +61,19 @@ const PLANS = [
     id: '22222222-2222-2222-2222-222222222222',
     name: 'Pro $25K',
     balance: 25000,
-    price: 199,
+    price: 139,
     phase1Target: 2000,
     phase2Target: 1250,
     dailyLoss: 1250,
     maxDrawdown: 2500,
-    popular: true,
+    popular: false,
     description: 'Our most popular evaluation tier with balanced risk and capital.',
   },
   {
     id: '33333333-3333-3333-3333-333333333333',
     name: 'Elite $50K',
     balance: 50000,
-    price: 299,
+    price: 239,
     phase1Target: 4000,
     phase2Target: 2500,
     dailyLoss: 2500,
@@ -73,13 +85,25 @@ const PLANS = [
     id: '44444444-4444-4444-4444-444444444444',
     name: 'Master $100K',
     balance: 100000,
-    price: 499,
+    price: 399,
     phase1Target: 8000,
     phase2Target: 5000,
     dailyLoss: 5000,
     maxDrawdown: 10000,
-    popular: false,
+    popular: true,
     description: 'The premier institutional challenge tier with maximum simulated allocations.',
+  },
+  {
+    id: '55555555-5555-5555-5555-555555555555',
+    name: 'Elite $200K',
+    balance: 200000,
+    price: 799,
+    phase1Target: 16000,
+    phase2Target: 10000,
+    dailyLoss: 10000,
+    maxDrawdown: 20000,
+    popular: false,
+    description: 'Maximum simulated capital for elite traders targeting institutional-grade scale.',
   },
 ];
 
@@ -222,7 +246,7 @@ export default function PricingPage() {
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {PLANS.map((plan) => (
           <Card
             key={plan.id}
