@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -62,7 +62,7 @@ const MOCK_ACCOUNTS = [
   },
 ];
 
-export default function CertificatePage() {
+function CertificatePageContent() {
   const params = useSearchParams();
   const certRef = useRef<HTMLDivElement>(null);
 
@@ -359,5 +359,19 @@ export default function CertificatePage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function CertificatePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-screen bg-[#06080f]">
+          <Loader2 className="h-8 w-8 text-violet-400 animate-spin" />
+        </div>
+      }
+    >
+      <CertificatePageContent />
+    </Suspense>
   );
 }
